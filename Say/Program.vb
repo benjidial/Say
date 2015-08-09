@@ -1,12 +1,12 @@
 ﻿Module Program
-    Function Main(ByVal cmdArgs() As String) As Integer
+    <System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")> Function Main(ByVal cmdArgs() As String) As Integer
         Dim NL As String = Environment.NewLine
         If (cmdArgs.Length = 0) Or (cmdArgs.Length = 1) Then
             Console.WriteLine("Say interval text" + NL +
                               "Say interval /f [/s] file" + NL + NL +
                               "  interval     The interval in milliseconds between the output" + NL +
                               "                 of each character (must be a positive integer" + NL +
-                              "                 less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.InstalledUICulture) + ")" + NL +
+                              "                 less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.CurrentCulture) + ")" + NL +
                               "  text         The text to output (may contain whitespace)" + NL +
                               "  /f           Specifies that text will be loaded from a file" + NL +
                               "  /s           If this is not specified, it will load the whole" + NL +
@@ -27,7 +27,7 @@
         Dim Interval As Integer
         If Integer.TryParse(cmdArgs(0), Interval) Then
             If Interval <= 0 Then
-                Console.WriteLine(cmdArgs(0) + " is not a positive integer less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.InstalledUICulture) + ".")
+                Console.WriteLine(cmdArgs(0) + " is not a positive integer less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.CurrentCulture) + ".")
                 Return -2
             End If
             Dim IsFirst As Boolean = True
@@ -78,7 +78,7 @@
                             Console.WriteLine(filename + " could not be read because the name is invalid!")
                             Return -6
                         Else
-                            Console.WriteLine("An unexpected error occured trying to read the file: " + ex.Message)
+                            Console.WriteLine("An unexpected error occurred trying to read the file: " + ex.Message)
                             Return -7
                         End If
                     Finally
@@ -120,7 +120,7 @@
                             Console.WriteLine(filename + " could not be read because the name is invalid!")
                             Return -6
                         Else
-                            Console.WriteLine("An unexpected error occured trying to read the file: " + ex.Message)
+                            Console.WriteLine("An unexpected error occurred trying to read the file: " + ex.Message)
                             Return -7
                         End If
                     Catch ex As OutOfMemoryException When ReadFile IsNot Nothing
@@ -158,7 +158,7 @@
             Console.WriteLine()
             Return 0
         End If
-        Console.WriteLine(cmdArgs(0) + " is not a positive integer less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.InstalledUICulture) + ".")
+        Console.WriteLine(cmdArgs(0) + " is not a positive integer less than or equal to " + Integer.MaxValue.ToString(Globalization.CultureInfo.CurrentCulture) + ".")
         Return -2
     End Function
 End Module
