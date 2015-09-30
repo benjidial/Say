@@ -7,9 +7,9 @@ This outputs text at a specifed rate.  It is licensed under CC0 1.0 Universal.  
 `Say [-i=interval] -f=filename`  
 `Say [-i=interval] -t=text`
 ## Return Values:
-* 0: Success
-* 1: Coming soon
-* 2: Invalid arguments
+0: Success  
+1: Coming soon  
+2: Invalid arguments
 ## Version History:
 ### 2.x.x
 #### Say 2.0.0
