@@ -1,15 +1,16 @@
 // Say v2.0.0, <www.github.com/benjidial/say>
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
-#define VERSION v2.0.0
+#define VERSION "v2.0.0"
 
 enum exitCodes
 {
   SUCCESS = 0,
   COMING_SOON = 1,
   INVALID_ARGUMENTS = 2
-}
+};
 
 void comingSoon()
 {
@@ -55,7 +56,7 @@ void license()
 
 void version()
 {
-  printf("Say, VERSION.\n"); // See #define near the top of this file.
+  printf("Say, %s.\n", VERSION); // See #define near the top of this file.
   printf("<github.com/benjidial/say>\n");
   exit(SUCCESS);
 }
@@ -76,7 +77,9 @@ int main(int argc, char *argv[])
           license();
         if (!strcmp(argv[1], "--version"))
           version();
-        invArgs(sprintf("I don't recognize %s in this context.", argv[1]));
+        char *message;
+        sprintf(message, "I don't recognize %s in this context.", argv[1]);
+        invArgs(message);
       case 'f':
         comingSoon();
       case 'i':
